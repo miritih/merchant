@@ -4,5 +4,5 @@ class Product < ActiveRecord::Base
   super
   end
   validates_numericality_of :price
-  validates_numericality_of :stock
+  validates :stock, numericality: { only_integer: true, message: "only allows positive integers"}
 end
