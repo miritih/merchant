@@ -1,6 +1,6 @@
 class OrderItemsController < ApplicationController
+  before_action :load_order, only: [:create]
   before_action :set_order_item, only: [:show, :edit, :update, :destroy]
-
   # GET /order_items
   # GET /order_items.json
   def index
@@ -66,6 +66,15 @@ class OrderItemsController < ApplicationController
     def set_order_item
       @order_item = OrderItem.find(params[:id])
     end
+
+    def load_order
+      begin
+      @order = Order.find(session[:order_id])
+      rescue ActiveRecord::RecordNotFound
+      @order = Order.create(status: "unsubmitted")
+      session[:order_id] = @order.id
+    end
+   end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_item_params
