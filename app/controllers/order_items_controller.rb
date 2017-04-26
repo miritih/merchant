@@ -3,19 +3,19 @@ class OrderItemsController < ApplicationController
   before_action :set_order_item, only: [:show, :edit, :update, :destroy]
   # GET /order_items
   # GET /order_items.json
-  def index
-    @order_items = OrderItem.all
-  end
+#  def index
+    #@order_items = OrderItem.all
+  #end
 
   # GET /order_items/1
   # GET /order_items/1.json
-  def show
-  end
+  #def show
+  #end
 
   # GET /order_items/new
-  def new
-    @order_item = OrderItem.new
-  end
+#def new
+  #  @order_item = OrderItem.new
+#  end
 
   # GET /order_items/1/edit
   def edit
@@ -24,7 +24,7 @@ class OrderItemsController < ApplicationController
   # POST /order_items
   # POST /order_items.json
   def create
-   @order_item = OrderItem.new(product_id: params[:product_id], order_id: @order.id)
+    @order_item = OrderItem.new(product_id: params[:product_id], order_id: @order.id)
     respond_to do |format|
       if @order_item.save
         format.html { redirect_to @order, notice: 'Successfully added product to cart.' }
@@ -67,7 +67,7 @@ class OrderItemsController < ApplicationController
     end
 
     def load_order
-      @order = Order.find_or_initialize_by_id(session[:order_id], status: "unsubmitted")
+        @order = Order.find_or_initialize_by_id(session[:order_id], status: "unsubmitted")
       if @order.new_record?
       @order.save!
       session[:order_id] = @order.id
