@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  has_many :OrderItem
   def price=(input)
   input.delete!("$")
   super
