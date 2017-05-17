@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :order_items
   resources :order_items
   resources :products
+
+match "/login" => redirect("/auth/twitter"), as: :login, via: :get
+match "/logout" => "sessions#destroy", as: :logout, via: :get
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
