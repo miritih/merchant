@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :addresses
   match '/auth/:provider/callback', to: 'sessions#create', via: :get
   resources :orders
   resources :order_items
