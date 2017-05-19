@@ -1,5 +1,5 @@
 <h1>Your Order</h1>
-
+<%= form_for @order do |f| %>
 <table>
   <tr>
     <th>Customer</th>
@@ -51,5 +51,12 @@
   <td></td>
   <td><%=print_price @order.total%></td>
 </tr>
+<tr>
+  <th>Shipping To:</th>
+  <td>
+    <%= f.select :address_id, current_user.addresses.collect{|a| [a.to_s, a.id]} %>
+  </td>
+</tr>
 <%= link_to "Empty Cart", @order, data: { confirm: 'Are you sure?' }, method: :delete %>
 </table>
+<% end %>
