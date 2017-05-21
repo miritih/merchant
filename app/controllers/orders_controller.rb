@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :confirm]
+  before_action :set_order, only: [:show, :edit, :confirm, :update, :destroy, :confirm]
 
   # GET /orders
   # GET /orders.json
@@ -19,6 +19,9 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+  end
+
+  def confirm
   end
 
   # POST /orders
