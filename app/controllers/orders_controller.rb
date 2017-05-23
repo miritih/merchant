@@ -21,14 +21,10 @@ class OrdersController < ApplicationController
   def edit
   end
 
-  def confirm
-  end
-
   # POST /orders
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -56,7 +52,11 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    #redirect_to root_url, notice: 'Your order has been shipped'
+    # if current_user
+    # #redirect_to root_url, notice: 'Your order has been shipped'
+    # else
+    # redirect_to order_path(session[:order_id]), notice: 'you need to login first'
+    # end
   end
 
   # DELETE /orders/1
